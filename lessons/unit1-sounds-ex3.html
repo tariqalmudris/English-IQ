@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit One - Page 2: Pronunciation Exercise 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nunito', 'Cairo', sans-serif;
+        }
+        .word-card {
+            cursor: grab;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        .word-card:active {
+            cursor: grabbing;
+        }
+        .word-card:hover {
+            transform: translateY(-3px);
+        }
+        .drop-zone {
+            min-height: 120px;
+            transition: all 0.3s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+            transform: scale(1.02);
+        }
+        .phonetic-symbol {
+            font-family: 'Times New Roman', serif;
+        }
+        .correct {
+            animation: correctPulse 0.5s ease;
+        }
+        .incorrect {
+            animation: shake 0.5s ease;
+        }
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        /* Mobile safe area */
+        body {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .back-nav {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen py-6 px-4">
+    <!-- Close/Back button -->
+    <div class="back-nav">
+        <a href="../middle-stage.html" class="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg text-indigo-600 block transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <div class="inline-block bg-white rounded-full px-4 py-1 text-sm font-semibold text-indigo-600 mb-3 shadow-sm">
+                Unit One • Page 2
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
+                🎧 Pronunciation
+            </h1>
+            <h2 class="text-xl md:text-2xl font-bold text-indigo-600 mb-4">
+                Exercise 3 – Sound Sorting
+            </h2>
+            <p class="text-gray-600 max-w-xl mx-auto text-sm md:text-base">
+                Listen to the words and sort them into the correct sound group. 
+                Drag each word to either the <span class="phonetic-symbol font-bold text-indigo-600">/f/</span> or 
+                <span class="phonetic-symbol font-bold text-purple-600">/v/</span> box.
+            </p>
+        </header>
+
+        <!-- Score Display -->
+        <div class="flex justify-center gap-4 mb-6">
+            <div class="bg-white rounded-xl px-4 py-2 shadow-md flex items-center gap-2">
+                <span class="text-gray-600 text-sm">Sorted:</span>
+                <span id="sortedCount" class="font-bold text-indigo-600">0</span>
+                <span class="text-gray-400">/</span>
+                <span id="totalCount" class="font-bold text-gray-600">14</span>
+            </div>
+            <button onclick="resetGame()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl px-4 py-2 shadow-md transition flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+            </button>
+        </div>
+
+        <!-- Word Bank -->
+        <div id="wordBank" class="bg-white rounded-2xl shadow-lg p-4 md:p-6 mb-6">
+            <h3 class="text-center text-gray-500 font-semibold mb-4 text-sm uppercase tracking-wide">
+                📚 Word Bank - Tap or Drag Words
+            </h3>
+            <div id="wordsContainer" class="flex flex-wrap justify-center gap-2 md:gap-3">
+                <!-- Words will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Sorting Zones -->
+        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+            <!-- /f/ Sound Zone -->
+            <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl shadow-lg p-1">
+                <div class="bg-white rounded-xl p-4">
+                    <div class="text-center mb-3">
+                        <span class="phonetic-symbol text-3xl md:text-4xl font-bold text-indigo-600">/f/</span>
+                        <p class="text-gray-500 text-xs mt-1">as in "fish"</p>
+                    </div>
+                    <div id="fZone" class="drop-zone bg-indigo-50 rounded-xl border-2 border-dashed border-indigo-200 p-3 flex flex-wrap gap-2 justify-center content-start"
+                         ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'f')">
+                        <p class="text-indigo-300 text-sm w-full text-center py-4 empty-message">Drop /f/ words here</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /v/ Sound Zone -->
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-1">
+                <div class="bg-white rounded-xl p-4">
+                    <div class="text-center mb-3">
+                        <span class="phonetic-symbol text-3xl md:text-4xl font-bold text-purple-600">/v/</span>
+                        <p class="text-gray-500 text-xs mt-1">as in "van"</p>
+                    </div>
+                    <div id="vZone" class="drop-zone bg-purple-50 rounded-xl border-2 border-dashed border-purple-200 p-3 flex flex-wrap gap-2 justify-center content-start"
+                         ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'v')">
+                        <p class="text-purple-300 text-sm w-full text-center py-4 empty-message">Drop /v/ words here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Check Answer Button -->
+        <div class="text-center mt-6">
+            <button onclick="checkAnswers()" class="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 text-lg">
+                ✓ Check My Answers
+            </button>
+        </div>
+
+        <!-- Results Modal -->
+        <div id="resultsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform scale-95 transition">
+                <div id="resultIcon" class="text-6xl mb-4">🎉</div>
+                <h3 id="resultTitle" class="text-2xl font-bold text-gray-800 mb-2">Great Job!</h3>
+                <p id="resultMessage" class="text-gray-600 mb-4">You got all the words correct!</p>
+                <div id="resultDetails" class="text-left bg-gray-50 rounded-xl p-4 mb-4 max-h-48 overflow-y-auto"></div>
+                <button onclick="closeModal()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-6 rounded-full transition">
+                    Continue
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-8 text-gray-400 text-sm">
+            <p>Interactive Exercise • Practice makes perfect! 💪</p>
+        </footer>
+    </div>
+
+    <script>
+        // Word data with correct sounds
+        const words = [
+            { word: 'after', sound: 'f' },
+            { word: 'twelve', sound: 'v' },
+            { word: 'have', sound: 'v' },
+            { word: 'vein', sound: 'v' },
+            { word: 'front', sound: 'f' },
+            { word: 'phone', sound: 'f' },
+            { word: 'cover', sound: 'v' },
+            { word: 'very', sound: 'v' },
+            { word: 'feet', sound: 'f' },
+            { word: 'before', sound: 'f' },
+            { word: 'few', sound: 'f' },
+            { word: 'drive', sound: 'v' },
+            { word: 'often', sound: 'f' },
+            { word: 'fly', sound: 'f' }
+        ];
+
+        let selectedWord = null;
+
+        // Shuffle array
+        function shuffle(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Initialize the game
+        function initGame() {
+            const container = document.getElementById('wordsContainer');
+            container.innerHTML = '';
+            
+            const shuffledWords = shuffle(words);
+            
+            shuffledWords.forEach(item => {
+                const card = createWordCard(item.word, item.sound);
+                container.appendChild(card);
+            });
+
+            // Clear zones
+            document.getElementById('fZone').innerHTML = '<p class="text-indigo-300 text-sm w-full text-center py-4 empty-message">Drop /f/ words here</p>';
+            document.getElementById('vZone').innerHTML = '<p class="text-purple-300 text-sm w-full text-center py-4 empty-message">Drop /v/ words here</p>';
+            
+            updateCount();
+        }
+
+        // Create a word card element
+        function createWordCard(word, sound) {
+            const card = document.createElement('div');
+            card.className = 'word-card bg-gradient-to-r from-gray-100 to-gray-50 hover:from-indigo-100 hover:to-purple-100 text-gray-700 font-semibold py-2 px-4 rounded-full shadow-md border border-gray-200 text-sm md:text-base';
+            card.textContent = word;
+            card.draggable = true;
+            card.dataset.word = word;
+            card.dataset.sound = sound;
+            
+            // Drag events
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+            
+            // Touch/click events for mobile
+            card.addEventListener('click', handleCardClick);
+            
+            return card;
+        }
+
+        // Drag handlers
+        function handleDragStart(e) {
+            e.target.classList.add('opacity-50');
+            e.dataTransfer.setData('text/plain', JSON.stringify({
+                word: e.target.dataset.word,
+                sound: e.target.dataset.sound
+            }));
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('opacity-50');
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e, zone) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            
+            const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+            moveWordToZone(data.word, data.sound, zone);
+        }
+
+        // Click handler for mobile
+        function handleCardClick(e) {
+            const card = e.target;
+            
+            if (selectedWord) {
+                // Deselect if clicking the same card
+                if (selectedWord === card) {
+                    card.classList.remove('ring-2', 'ring-indigo-500');
+                    selectedWord = null;
+                    return;
+                }
+                selectedWord.classList.remove('ring-2', 'ring-indigo-500');
+            }
+            
+            // Select the card
+            card.classList.add('ring-2', 'ring-indigo-500');
+            selectedWord = card;
+        }
+
+        // Zone click handlers for mobile
+        document.getElementById('fZone').addEventListener('click', function(e) {
+            if (selectedWord && e.target === this || e.target.classList.contains('empty-message')) {
+                moveWordToZone(selectedWord.dataset.word, selectedWord.dataset.sound, 'f');
+                selectedWord.classList.remove('ring-2', 'ring-indigo-500');
+                selectedWord = null;
+            }
+        });
+
+        document.getElementById('vZone').addEventListener('click', function(e) {
+            if (selectedWord && e.target === this || e.target.classList.contains('empty-message')) {
+                moveWordToZone(selectedWord.dataset.word, selectedWord.dataset.sound, 'v');
+                selectedWord.classList.remove('ring-2', 'ring-indigo-500');
+                selectedWord = null;
+            }
+        });
+
+        // Move word to zone
+        function moveWordToZone(word, sound, zone) {
+            // Remove from current location
+            const existingCard = document.querySelector(`[data-word="${word}"]`);
+            if (existingCard) {
+                existingCard.remove();
+            }
+            
+            // Create new card for the zone
+            const zoneElement = document.getElementById(zone + 'Zone');
+            const emptyMessage = zoneElement.querySelector('.empty-message');
+            if (emptyMessage) {
+                emptyMessage.remove();
+            }
+            
+            const card = createWordCard(word, sound);
+            card.dataset.placedIn = zone;
+            
+            // Style based on zone
+            if (zone === 'f') {
+                card.className = 'word-card bg-indigo-100 text-indigo-700 font-semibold py-2 px-4 rounded-full shadow-md border border-indigo-200 text-sm md:text-base';
+            } else {
+                card.className = 'word-card bg-purple-100 text-purple-700 font-semibold py-2 px-4 rounded-full shadow-md border border-purple-200 text-sm md:text-base';
+            }
+            
+            zoneElement.appendChild(card);
+            updateCount();
+        }
+
+        // Update sorted count
+        function updateCount() {
+            const fCount = document.getElementById('fZone').querySelectorAll('.word-card').length;
+            const vCount = document.getElementById('vZone').querySelectorAll('.word-card').length;
+            document.getElementById('sortedCount').textContent = fCount + vCount;
+        }
+
+        // Check answers
+        function checkAnswers() {
+            const fZone = document.getElementById('fZone');
+            const vZone = document.getElementById('vZone');
+            const fCards = fZone.querySelectorAll('.word-card');
+            const vCards = vZone.querySelectorAll('.word-card');
+            
+            let correct = 0;
+            let incorrect = [];
+            
+            fCards.forEach(card => {
+                if (card.dataset.sound === 'f') {
+                    correct++;
+                    card.classList.add('correct');
+                } else {
+                    incorrect.push({ word: card.dataset.word, placed: 'f', correct: 'v' });
+                    card.classList.add('incorrect');
+                }
+            });
+            
+            vCards.forEach(card => {
+                if (card.dataset.sound === 'v') {
+                    correct++;
+                    card.classList.add('correct');
+                } else {
+                    incorrect.push({ word: card.dataset.word, placed: 'v', correct: 'f' });
+                    card.classList.add('incorrect');
+                }
+            });
+            
+            const sorted = fCards.length + vCards.length;
+            const unsorted = 14 - sorted;
+            
+            showResults(correct, incorrect, unsorted);
+        }
+
+        // Show results modal
+        function showResults(correct, incorrect, unsorted) {
+            const modal = document.getElementById('resultsModal');
+            const icon = document.getElementById('resultIcon');
+            const title = document.getElementById('resultTitle');
+            const message = document.getElementById('resultMessage');
+            const details = document.getElementById('resultDetails');
+            
+            if (unsorted > 0) {
+                icon.textContent = '🤔';
+                title.textContent = 'Not Finished Yet!';
+                message.textContent = `You still have ${unsorted} word${unsorted > 1 ? 's' : ''} to sort.`;
+                details.innerHTML = '<p class="text-gray-500 text-sm">Sort all words before checking!</p>';
+            } else if (incorrect.length === 0) {
+                icon.textContent = '🎉';
+                title.textContent = 'Perfect Score!';
+                message.textContent = 'Amazing! You got all 14 words correct!';
+                details.innerHTML = '<p class="text-green-600 font-semibold">★ 14/14 Correct ★</p>';
+                createConfetti();
+            } else {
+                icon.textContent = correct >= 10 ? '👍' : '💪';
+                title.textContent = correct >= 10 ? 'Good Job!' : 'Keep Practicing!';
+                message.textContent = `You got ${correct} out of 14 correct.`;
+                
+                let detailsHTML = `<p class="font-semibold text-gray-700 mb-2">Incorrect words:</p>`;
+                incorrect.forEach(item => {
+                    detailsHTML += `<p class="text-sm text-red-600 mb-1">• "${item.word}" should be in /${item.correct}/</p>`;
+                });
+                details.innerHTML = detailsHTML;
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('resultsModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            
+            // Remove animation classes
+            document.querySelectorAll('.correct, .incorrect').forEach(el => {
+                el.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        // Reset game
+        function resetGame() {
+            initGame();
+        }
+
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#6366f1', '#a855f7', '#ec4899', '#f59e0b', '#10b981'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 2000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Initialize on load
+        initGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>المفضلة | منصة الإنجليزية</title>
+    <meta name="description" content="دروسك المفضلة في منصة الإنجليزية العراقية - وصول سريع لما تحب">
+    <!-- PWA Manifest & Theme -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4338ca">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="دروسي العراقية">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+    <div class="background-decorations">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="container">
+            <div class="brand">
+                <span class="en-text">English IQ Iraq</span>
+                <span class="ar-text">منصة دروسي العراقية</span>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="favorites.html" class="nav-link nav-link--active">
+                    ⭐ المفضلة
+                    <span class="nav-badge" id="fav-nav-badge" style="display:none">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <a href="index.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                </svg>
+                رجوع للرئيسية
+            </a>
+            <h1 class="page-title">⭐ المفضلة</h1>
+        </div>
+
+        <!-- Favorites counter + clear all -->
+        <div class="fav-page-toolbar" id="favToolbar" style="display:none">
+            <p class="fav-count-text" id="favCountText"></p>
+            <button class="clear-all-btn" id="clearAllBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+                حذف الكل
+            </button>
+        </div>
+
+        <!-- Favorites Grid -->
+        <div class="lessons-grid" id="favoritesContainer">
+            <!-- Injected by JS -->
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">من نحن</a>
+                <a href="terms.html" class="footer-link">الشروط والأحكام</a>
+            </div>
+            <p class="footer-copyright">© 2026 منصة دروسي العراقية — English IQ Iraq. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="nav.min.js"></script>
+    <script src="data/lessons.min.js"></script>
+    <script src="favorites.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        renderFavoritesPage();
+
+        document.getElementById('clearAllBtn').addEventListener('click', () => {
+            if (confirm('هل تريد حذف كل المفضلة؟')) {
+                saveFavorites([]);
+                renderFavoritesPage();
+                updateFavNavBadge();
+                showFavToast('🗑️ تم مسح كل المفضلة');
+            }
+        });
+    });
+
+    function renderFavoritesPage() {
+        const container = document.getElementById('favoritesContainer');
+        const toolbar   = document.getElementById('favToolbar');
+        const countText = document.getElementById('favCountText');
+        const list = getFavorites();
+
+        updateFavNavBadge();
+
+        if (list.length === 0) {
+            toolbar.style.display = 'none';
+            container.innerHTML = `
+                <div class="empty-favs">
+                    <div class="empty-favs-icon">⭐</div>
+                    <h2>لا توجد دروس مفضلة بعد</h2>
+                    <p>اضغط على زر "⭐ إضافة للمفضلة" في أي درس لحفظه هنا</p>
+                    <a href="index.html" class="watch-btn" style="max-width:280px; margin-top:24px;">
+                        تصفح الدروس
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                    </a>
+                </div>`;
+            return;
+        }
+
+        toolbar.style.display = 'flex';
+        countText.textContent = `${list.length} درس محفوظ`;
+
+        // Merge with LESSONS_DATA if available for fresh icon/path data
+        let html = '';
+        list.forEach((lesson, index) => {
+            const live = (typeof LESSONS_DATA !== 'undefined')
+                ? LESSONS_DATA.find(l => l.id === lesson.id) || lesson
+                : lesson;
+            const iconSvg = (typeof ICONS !== 'undefined')
+                ? (ICONS[live.icon] || ICONS['video'])
+                : '⭐';
+            const delay = 0.05 * (index + 1);
+
+            html += `
+            <div class="lesson-card fav-page-card" style="animation-delay: ${delay}s" data-id="${live.id}">
+                <div class="lesson-icon-bg">${iconSvg}</div>
+                <div class="lesson-info">
+                    <span class="lesson-meta">${live.meta}</span>
+                    <h3 class="lesson-title">${live.title}</h3>
+                    ${live.grade ? `<span class="fav-grade-badge">${gradeLabel(live.grade)}</span>` : ''}
+                </div>
+                <div class="fav-page-actions">
+                    <a href="${live.path}" class="watch-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653z" />
+                        </svg>
+                        مشاهدة
+                    </a>
+                    <button class="remove-fav-btn" data-id="${live.id}" aria-label="حذف من المفضلة">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                        حذف
+                    </button>
+                </div>
+            </div>`;
+        });
+
+        container.innerHTML = html;
+
+        // Bind remove buttons
+        container.querySelectorAll('.remove-fav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                const card = btn.closest('.fav-page-card');
+                // Animate card out
+                card.style.transition = 'opacity 0.3s, transform 0.3s';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    removeFavorite(id);
+                    renderFavoritesPage();
+                    showFavToast('🗑️ تم الحذف من المفضلة');
+                }, 300);
+            });
+        });
+    }
+
+    // Convert grade key to readable Arabic label
+    function gradeLabel(grade) {
+        const map = {
+            'middle-1-general': 'الأول متوسط - عام',
+            'middle-2-general': 'الثاني متوسط - عام',
+            'middle-3-general': 'الثالث متوسط - عام',
+            'middle-1-islamic': 'الأول متوسط - إسلامي',
+            'middle-2-islamic': 'الثاني متوسط - إسلامي',
+            'middle-3-islamic': 'الثالث متوسط - إسلامي',
+            'prep-4-general':   'الرابع إعدادي - عام',
+            'prep-5-general':   'الخامس إعدادي - عام',
+            'prep-6-general':   'السادس إعدادي - عام',
+            'prep-4-islamic':   'الرابع إسلامي',
+            'prep-5-islamic':   'الخامس إسلامي',
+            'prep-6-islamic':   'السادس إسلامي',
+        };
+        return map[grade] || grade;
+    }
+    </script>
+    <script src="pwa.min.js"></script>
+</body>
+</html>

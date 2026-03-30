@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit One - Pronunciation Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nunito', 'Cairo', sans-serif;
+        }
+        .sound-badge {
+            font-family: monospace;
+        }
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        .card-hover {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .success-pulse {
+            animation: pulse 0.3s ease-in-out;
+        }
+        /* Mobile safe area */
+        body {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .back-nav {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen py-6 px-4">
+    <!-- Close/Back button for mobile experience -->
+    <div class="back-nav">
+        <a href="../middle-stage.html" class="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg text-indigo-600 block transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8 fade-in">
+            <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm mb-4">
+                <span class="text-indigo-600 font-semibold">📚 Unit One</span>
+                <span class="text-gray-300">|</span>
+                <span class="text-purple-600 font-semibold">Page 2</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
+                🎤 Pronunciation
+            </h1>
+            <p class="text-gray-500 text-lg">Exercise 2 - /f/ vs /v/</p>
+        </header>
+
+        <!-- Instructions -->
+        <div class="bg-white rounded-2xl shadow-lg p-5 mb-6 fade-in border-l-4 border-indigo-500" style="animation-delay: 0.1s;">
+            <div class="flex items-start gap-3">
+                <span class="text-2xl">💡</span>
+                <div>
+                    <h2 class="font-bold text-gray-800 mb-1">Instructions</h2>
+                    <p class="text-gray-600">Give <strong>five examples</strong> for each sound. Think of words that contain the /f/ or /v/ sounds and type them in the boxes below.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- /f/ Sound Section -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 card-hover fade-in" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="sound-badge bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-2xl font-bold px-4 py-2 rounded-xl shadow-md">
+                    /f/
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-lg">The F Sound</h3>
+                    <p class="text-gray-500 text-sm">Voiceless labiodental fricative</p>
+                </div>
+                <span class="ml-auto text-3xl">🔵</span>
+            </div>
+            
+            <div class="space-y-3" id="f-inputs">
+                <!-- Inputs generated dynamically or kept as static -->
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none input-glow transition-all" placeholder="e.g., fish" data-sound="f" data-index="1">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <!-- ... other inputs ... -->
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none input-glow transition-all" placeholder="e.g., phone" data-sound="f" data-index="2">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none input-glow transition-all" placeholder="e.g., elephant" data-sound="f" data-index="3">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none input-glow transition-all" placeholder="e.g., cough" data-sound="f" data-index="4">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none input-glow transition-all" placeholder="e.g., family" data-sound="f" data-index="5">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+                <div class="h-2 flex-1 bg-gray-100 rounded-full overflow-hidden">
+                    <div id="f-progress" class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <span id="f-count" class="text-sm font-semibold text-gray-500">0/5</span>
+            </div>
+        </div>
+
+        <!-- /v/ Sound Section -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 card-hover fade-in" style="animation-delay: 0.3s;">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="sound-badge bg-gradient-to-r from-purple-500 to-pink-500 text-white text-2xl font-bold px-4 py-2 rounded-xl shadow-md">
+                    /v/
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-lg">The V Sound</h3>
+                    <p class="text-gray-500 text-sm">Voiced labiodental fricative</p>
+                </div>
+                <span class="ml-auto text-3xl">🟣</span>
+            </div>
+            
+            <div class="space-y-3" id="v-inputs">
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-purple-400 focus:outline-none input-glow transition-all" placeholder="e.g., voice" data-sound="v" data-index="1">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-purple-400 focus:outline-none input-glow transition-all" placeholder="e.g., very" data-sound="v" data-index="2">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-purple-400 focus:outline-none input-glow transition-all" placeholder="e.g., love" data-sound="v" data-index="3">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-purple-400 focus:outline-none input-glow transition-all" placeholder="e.g., eleven" data-sound="v" data-index="4">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                    <input type="text" class="flex-1 border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-purple-400 focus:outline-none input-glow transition-all" placeholder="e.g., travel" data-sound="v" data-index="5">
+                    <span class="status-icon text-xl opacity-0">✅</span>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+                <div class="h-2 flex-1 bg-gray-100 rounded-full overflow-hidden">
+                    <div id="v-progress" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <span id="v-count" class="text-sm font-semibold text-gray-500">0/5</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-6 fade-in" style="animation-delay: 0.4s;">
+            <button onclick="playClickSound(); checkAnswers()" class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                <span>✨</span> Submit Answers
+            </button>
+            <button onclick="playClickSound(); resetForm()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-4 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
+                <span>🔄</span> Reset
+            </button>
+        </div>
+        
+        <!-- Sound Toggle -->
+        <div class="flex justify-center mb-6 fade-in" style="animation-delay: 0.45s;">
+            <button onclick="toggleSound()" id="sound-toggle" class="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-600 font-semibold py-2 px-4 rounded-full shadow-md transition-all border border-gray-200">
+                <span id="sound-icon">🔊</span>
+                <span id="sound-text">Sound On</span>
+            </button>
+        </div>
+
+        <!-- Result Message -->
+        <div id="result-message" class="hidden bg-white rounded-2xl shadow-lg p-6 text-center fade-in">
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-400 text-sm mt-8 fade-in" style="animation-delay: 0.5s;">
+            <p>📖 Pronunciation Practice • Unit One</p>
+        </footer>
+    </div>
+
+    <script>
+        // Audio Context for sound effects
+        let audioContext = null;
+        let soundEnabled = true;
+        
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('sound-icon');
+            const text = document.getElementById('sound-text');
+            
+            if (soundEnabled) {
+                icon.textContent = '🔊';
+                text.textContent = 'Sound On';
+            } else {
+                icon.textContent = '🔇';
+                text.textContent = 'Sound Off';
+            }
+        }
+        
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        
+        // Play a success/correct sound (pleasant ding)
+        function playCorrectSound() {
+            if (!soundEnabled) return;
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(880, audioContext.currentTime); // A5 note
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+        
+        // Play an error/wrong sound (lower tone)
+        function playWrongSound() {
+            if (!soundEnabled) return;
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(220, audioContext.currentTime); // A3 note
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+        
+        // Play celebration sound (ascending notes)
+        function playCelebrationSound() {
+            if (!soundEnabled) return;
+            initAudio();
+            const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+            
+            notes.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+                oscillator.type = 'sine';
+                
+                const startTime = audioContext.currentTime + (index * 0.15);
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, startTime + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 0.4);
+            });
+        }
+        
+        // Play click sound for buttons
+        function playClickSound() {
+            if (!soundEnabled) return;
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
+        // Example words for suggestions
+        const fSoundExamples = ['fish', 'phone', 'elephant', 'cough', 'family', 'father', 'finish', 'friend', 'photo', 'laugh', 'coffee', 'office', 'different', 'difficult', 'leaf', 'roof', 'staff', 'effort', 'elfin', 'rofessional'];
+        const vSoundExamples = ['voice', 'very', 'love', 'eleven', 'travel', 'video', 'visit', 'never', 'river', 'over', 'seven', 'have', 'give', 'live', 'move', 'ieve', 'oven', 'wave', 'dive', 'drive'];
+
+        // Check if word contains /f/ sound (f, ff, ph, gh)
+        function containsFSound(word) {
+            const lowerWord = word.toLowerCase().trim();
+            // Check for f, ff, ph patterns
+            if (/f/.test(lowerWord) || /ph/.test(lowerWord)) {
+                return true;
+            }
+            // Check for gh that sounds like f (cough, laugh, enough, tough, rough)
+            if (/gh/.test(lowerWord) && /(ough|augh)/.test(lowerWord)) {
+                return true;
+            }
+            return false;
+        }
+
+        // Check if word contains /v/ sound
+        function containsVSound(word) {
+            const lowerWord = word.toLowerCase().trim();
+            return /v/.test(lowerWord);
+        }
+
+        // Get a random suggestion
+        function getRandomSuggestion(sound, usedWords) {
+            const examples = sound === 'f' ? fSoundExamples : vSoundExamples;
+            const available = examples.filter(word => !usedWords.includes(word.toLowerCase()));
+            if (available.length === 0) return examples[0];
+            return available[Math.floor(Math.random() * available.length)];
+        }
+
+        // Get or create feedback element for an input
+        function getFeedbackElement(input) {
+            let feedback = input.parentElement.nextElementSibling;
+            if (!feedback || !feedback.classList.contains('feedback-message')) {
+                feedback = document.createElement('div');
+                feedback.className = 'feedback-message text-sm mt-1 hidden';
+                input.parentElement.after(feedback);
+            }
+            return feedback;
+        }
+
+        // Validate a single input
+        function validateInput(input) {
+            const word = input.value.trim();
+            const sound = input.dataset.sound;
+            const statusIcon = input.parentElement.querySelector('.status-icon');
+            const feedback = getFeedbackElement(input);
+            
+            // Clear previous state
+            input.classList.remove('border-red-400', 'border-green-400', 'bg-red-50', 'bg-green-50');
+            statusIcon.textContent = '✅';
+            
+            if (word.length === 0) {
+                feedback.classList.add('hidden');
+                statusIcon.classList.add('opacity-0');
+                return { valid: false, empty: true };
+            }
+            
+            const isValid = sound === 'f' ? containsFSound(word) : containsVSound(word);
+            
+            if (isValid) {
+                // Correct answer
+                input.classList.add('border-green-400', 'bg-green-50');
+                statusIcon.textContent = '✅';
+                statusIcon.classList.remove('opacity-0');
+                feedback.classList.add('hidden');
+                
+                // Play correct sound if this is a new correct answer
+                if (!input.dataset.wasCorrect) {
+                    playCorrectSound();
+                    input.dataset.wasCorrect = 'true';
+                }
+                
+                return { valid: true, empty: false };
+            } else {
+                // Incorrect answer
+                input.classList.add('border-red-400', 'bg-red-50');
+                statusIcon.textContent = '❌';
+                statusIcon.classList.remove('opacity-0');
+                input.dataset.wasCorrect = '';
+                
+                // Play wrong sound
+                playWrongSound();
+                
+                // Get used words to avoid suggesting duplicates
+                const usedWords = Array.from(document.querySelectorAll(`[data-sound="${sound}"]`))
+                    .map(inp => inp.value.toLowerCase().trim())
+                    .filter(w => w.length > 0);
+                
+                const suggestion = getRandomSuggestion(sound, usedWords);
+                const soundSymbol = sound === 'f' ? '/f/' : '/v/';
+                
+                feedback.innerHTML = `
+                    <div class="flex items-start gap-2 p-2 bg-red-50 border border-red-200 rounded-lg">
+                        <span class="text-red-500">⚠️</span>
+                        <div>
+                            <p class="text-red-600 font-semibold">"${word}" doesn't contain the ${soundSymbol} sound.</p>
+                            <p class="text-gray-600">💡 Try: <strong class="text-green-600 cursor-pointer hover:underline" onclick="useSuggestion(this, '${suggestion}')">${suggestion}</strong></p>
+                        </div>
+                    </div>
+                `;
+                feedback.classList.remove('hidden');
+                return { valid: false, empty: false };
+            }
+        }
+
+        // Use suggestion when clicked
+        function useSuggestion(element, word) {
+            const feedbackDiv = element.closest('.feedback-message');
+            const inputRow = feedbackDiv.previousElementSibling;
+            const input = inputRow.querySelector('input');
+            input.value = word;
+            validateInput(input);
+            updateProgress();
+        }
+
+        // Track progress for each sound
+        function updateProgress() {
+            const fInputs = document.querySelectorAll('[data-sound="f"]');
+            const vInputs = document.querySelectorAll('[data-sound="v"]');
+            
+            let fCount = 0;
+            let vCount = 0;
+            
+            fInputs.forEach(input => {
+                if (input.value.trim().length > 0 && containsFSound(input.value)) {
+                    fCount++;
+                }
+            });
+            
+            vInputs.forEach(input => {
+                if (input.value.trim().length > 0 && containsVSound(input.value)) {
+                    vCount++;
+                }
+            });
+            
+            document.getElementById('f-progress').style.width = (fCount / 5 * 100) + '%';
+            document.getElementById('v-progress').style.width = (vCount / 5 * 100) + '%';
+            document.getElementById('f-count').textContent = fCount + '/5';
+            document.getElementById('v-count').textContent = vCount + '/5';
+            
+            return { fCount, vCount };
+        }
+
+        // Add input listeners for real-time validation
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                // Debounce validation
+                clearTimeout(input.validateTimeout);
+                input.validateTimeout = setTimeout(() => {
+                    validateInput(input);
+                    updateProgress();
+                }, 500);
+            });
+            
+            input.addEventListener('blur', () => {
+                validateInput(input);
+                updateProgress();
+            });
+        });
+
+        function checkAnswers() {
+            let errors = 0;
+            let correct = 0;
+            let empty = 0;
+            
+            document.querySelectorAll('input').forEach(input => {
+                const result = validateInput(input);
+                if (result.empty) {
+                    empty++;
+                } else if (result.valid) {
+                    correct++;
+                } else {
+                    errors++;
+                }
+            });
+            
+            const { fCount, vCount } = updateProgress();
+            const resultDiv = document.getElementById('result-message');
+            
+            resultDiv.classList.remove('hidden');
+            
+            if (correct === 10) {
+                playCelebrationSound();
+                resultDiv.innerHTML = `
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-bold text-green-600 mb-2">Excellent Work!</h3>
+                    <p class="text-gray-600">You've correctly completed all 10 examples. Great job practicing your /f/ and /v/ sounds!</p>
+                    <div class="mt-4 flex justify-center gap-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">/f/: ${fCount}/5 ✓</span>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">/v/: ${vCount}/5 ✓</span>
+                    </div>
+                `;
+                resultDiv.className = 'bg-green-50 border-2 border-green-200 rounded-2xl shadow-lg p-6 text-center fade-in';
+            } else if (errors > 0) {
+                resultDiv.innerHTML = `
+                    <div class="text-6xl mb-4">🔍</div>
+                    <h3 class="text-2xl font-bold text-red-600 mb-2">Some Corrections Needed</h3>
+                    <p class="text-gray-600">You have <strong>${errors} incorrect</strong> word(s). Check the suggestions above and try again!</p>
+                    <div class="mt-4 flex justify-center gap-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">/f/: ${fCount}/5</span>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">/v/: ${vCount}/5</span>
+                    </div>
+                `;
+                resultDiv.className = 'bg-red-50 border-2 border-red-200 rounded-2xl shadow-lg p-6 text-center fade-in';
+            } else if (empty > 0) {
+                resultDiv.innerHTML = `
+                    <div class="text-6xl mb-4">📝</div>
+                    <h3 class="text-2xl font-bold text-yellow-600 mb-2">Keep Going!</h3>
+                    <p class="text-gray-600">You have ${correct}/10 correct answers. Fill in the remaining ${empty} fields!</p>
+                    <div class="mt-4 flex justify-center gap-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">/f/: ${fCount}/5</span>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">/v/: ${vCount}/5</span>
+                    </div>
+                `;
+                resultDiv.className = 'bg-yellow-50 border-2 border-yellow-200 rounded-2xl shadow-lg p-6 text-center fade-in';
+            }
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetForm() {
+            document.querySelectorAll('input').forEach(input => {
+                input.value = '';
+                input.classList.remove('border-red-400', 'border-green-400', 'bg-red-50', 'bg-green-50');
+                const feedback = input.parentElement.nextElementSibling;
+                if (feedback && feedback.classList.contains('feedback-message')) {
+                    feedback.classList.add('hidden');
+                }
+                const statusIcon = input.parentElement.querySelector('.status-icon');
+                statusIcon.textContent = '✅';
+                statusIcon.classList.add('opacity-0');
+            });
+            updateProgress();
+            document.getElementById('result-message').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

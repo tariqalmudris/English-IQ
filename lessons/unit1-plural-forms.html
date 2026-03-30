@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1 - Page 5 | Plural Forms</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nunito', sans-serif;
+            box-sizing: border-box;
+        }
+        .arabic-text {
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        .break-words {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .flashcard {
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flashcard-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+        .exercise-input {
+            min-width: 4rem;
+            transition: all 0.3s ease;
+        }
+        .exercise-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        .exercise-input.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .exercise-input.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .hint-text {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .bounce-gentle {
+            animation: bounce-gentle 2s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .tap-hint {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+css
+.back-nav {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100; /* لضمان وجوده فوق كل شيء */
+}
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- Audio elements for sound effects -->
+    <audio id="clickSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRl9vT19teleUyBChunk" type="audio/wav">
+    </audio>
+
+<!-- زر العودة العائم -->
+<div class="back-nav">
+    <a href="javascript:history.back()" class="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg text-indigo-600 block transition-transform hover:scale-110" style="border: 2px solid #6366f1; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </a>
+</div>
+
+    <!-- Header -->
+    <header class="gradient-header text-white py-6 px-4 mb-6 shadow-lg">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">Unit 1 - Page 5</span>
+                </div>
+                <div class="bounce-gentle text-2xl">📚</div>
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold mt-4">Grammar: Plural Forms</h1>
+            <p class="text-purple-100 mt-1">Regular and Irregular Nouns | الأسماء المفردة والجمع</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 pb-12">
+        
+        <!-- Arabic Introduction Card -->
+        <section class="bg-white rounded-2xl card-shadow p-5 mb-6 border-r-4 border-purple-500">
+            <div class="arabic-text">
+                <h2 class="text-xl font-bold text-purple-700 mb-3">🎯 ما هو الجمع في اللغة الإنجليزية؟</h2>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    الجمع هو تحويل الاسم من مفرد (شيء واحد) إلى جمع (أكثر من شيء واحد).
+                </p>
+                <p class="text-gray-600 text-sm bg-purple-50 p-3 rounded-lg">
+                    💡 <strong>مثال:</strong> كتاب واحد = book | كتابان أو أكثر = books
+                </p>
+            </div>
+        </section>
+
+        <!-- Regular Nouns Section -->
+        <section class="mb-8">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                Regular Nouns - الأسماء العادية
+            </h2>
+
+            <!-- Flashcards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                
+                <!-- Rule 1: Add -s -->
+                <div class="flashcard h-44" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-4 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="text-3xl mb-2">➕ s</span>
+                            <span class="font-bold">Add -s</span>
+                            <span class="text-xs mt-2 tap-hint opacity-75">👆 Tap to learn</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-4 card-shadow border-2 border-green-400">
+                            <div class="text-center mb-2">
+                                <span class="text-green-600 font-bold">Add -s</span>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <p>car → <strong class="text-green-600">cars</strong></p>
+                                <p>phone → <strong class="text-green-600">phones</strong></p>
+                                <p>pen → <strong class="text-green-600">pens</strong></p>
+                            </div>
+                            <div class="arabic-text text-xs text-gray-500 mt-2 bg-gray-50 p-2 rounded">
+                                أضف حرف s في نهاية الكلمة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule 2: Add -es -->
+                <div class="flashcard h-44" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-4 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="text-3xl mb-2">➕ es</span>
+                            <span class="font-bold">Add -es</span>
+                            <span class="text-xs mt-2 tap-hint opacity-75">👆 Tap to learn</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-4 card-shadow border-2 border-blue-400">
+                            <div class="text-center mb-2">
+                                <span class="text-blue-600 font-bold text-sm">s, ss, sh, ch, x, o → +es</span>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <p>bus → <strong class="text-blue-600">buses</strong></p>
+                                <p>class → <strong class="text-blue-600">classes</strong></p>
+                                <p>fox → <strong class="text-blue-600">foxes</strong></p>
+                            </div>
+                            <div class="arabic-text text-xs text-gray-500 mt-2 bg-gray-50 p-2 rounded">
+                                أضف es للكلمات المنتهية بـ s, ss, sh, ch, x, o
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule 3: y → ies -->
+                <div class="flashcard h-44" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl p-4 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="text-3xl mb-2">y → ies</span>
+                            <span class="font-bold">Change y to ies</span>
+                            <span class="text-xs mt-2 tap-hint opacity-75">👆 Tap to learn</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-4 card-shadow border-2 border-orange-400">
+                            <div class="text-center mb-2">
+                                <span class="text-orange-600 font-bold text-sm">Consonant + y → ies</span>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <p>baby → <strong class="text-orange-600">babies</strong></p>
+                                <p>lorry → <strong class="text-orange-600">lorries</strong></p>
+                                <p>city → <strong class="text-orange-600">cities</strong></p>
+                            </div>
+                            <div class="arabic-text text-xs text-gray-500 mt-2 bg-gray-50 p-2 rounded">
+                                احذف y وأضف ies (إذا سبقها حرف ساكن)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule 4: f/fe → ves -->
+                <div class="flashcard h-44" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl p-4 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="text-3xl mb-2">f → ves</span>
+                            <span class="font-bold">Change f to ves</span>
+                            <span class="text-xs mt-2 tap-hint opacity-75">👆 Tap to learn</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-4 card-shadow border-2 border-pink-400">
+                            <div class="text-center mb-2">
+                                <span class="text-pink-600 font-bold text-sm">f / fe → ves</span>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <p>knife → <strong class="text-pink-600">knives</strong></p>
+                                <p>wife → <strong class="text-pink-600">wives</strong></p>
+                                <p>leaf → <strong class="text-pink-600">leaves</strong></p>
+                            </div>
+                            <div class="arabic-text text-xs text-gray-500 mt-2 bg-gray-50 p-2 rounded">
+                                احذف f أو fe وأضف ves
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Irregular Nouns Section -->
+        <section class="mb-8">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                Irregular Nouns - الأسماء الشاذة
+            </h2>
+
+            <!-- Arabic Explanation -->
+            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-xl mb-4">
+                <div class="arabic-text">
+                    <p class="text-gray-700">
+                        ⚠️ <strong>الأسماء الشاذة</strong> لا تتبع القواعد العادية. يجب حفظها كما هي!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Irregular Nouns Flashcards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-red-400 to-rose-500 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">child</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-red-400 flex flex-col justify-center items-center">
+                            <span class="text-red-600 font-bold text-lg">children</span>
+                            <span class="arabic-text text-xs text-gray-500">أطفال</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">woman</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-purple-400 flex flex-col justify-center items-center">
+                            <span class="text-purple-600 font-bold text-lg">women</span>
+                            <span class="arabic-text text-xs text-gray-500">نساء</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">man</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-indigo-400 flex flex-col justify-center items-center">
+                            <span class="text-indigo-600 font-bold text-lg">men</span>
+                            <span class="arabic-text text-xs text-gray-500">رجال</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">tooth</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-teal-400 flex flex-col justify-center items-center">
+                            <span class="text-teal-600 font-bold text-lg">teeth</span>
+                            <span class="arabic-text text-xs text-gray-500">أسنان</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">foot</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-amber-400 flex flex-col justify-center items-center">
+                            <span class="text-amber-600 font-bold text-lg">feet</span>
+                            <span class="arabic-text text-xs text-gray-500">أقدام</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">mouse</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-cyan-400 flex flex-col justify-center items-center">
+                            <span class="text-cyan-600 font-bold text-lg">mice</span>
+                            <span class="arabic-text text-xs text-gray-500">فئران</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-lime-400 to-lime-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">person</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-lime-400 flex flex-col justify-center items-center">
+                            <span class="text-lime-600 font-bold text-lg">people</span>
+                            <span class="arabic-text text-xs text-gray-500">ناس</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard h-28" onclick="flipCard(this)">
+                    <div class="flashcard-inner relative w-full h-full">
+                        <div class="flashcard-front absolute w-full h-full bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 rounded-xl p-3 flex flex-col justify-center items-center text-white card-shadow">
+                            <span class="font-bold text-lg">goose</span>
+                            <span class="text-xs opacity-75">👆 tap</span>
+                        </div>
+                        <div class="flashcard-back absolute w-full h-full bg-white rounded-xl p-3 card-shadow border-2 border-fuchsia-400 flex flex-col justify-center items-center">
+                            <span class="text-fuchsia-600 font-bold text-lg">geese</span>
+                            <span class="arabic-text text-xs text-gray-500">إوز</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Exercises Section -->
+        <section class="mb-8">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                <span class="text-2xl">✏️</span>
+                Exercises - التمارين
+            </h2>
+
+            <!-- Exercise A -->
+            <div class="bg-white rounded-2xl card-shadow p-5 mb-6" id="exerciseA">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">A</span>
+                        Complete the sentences
+                    </h3>
+                    <div class="arabic-text text-sm text-gray-500 bg-indigo-50 px-3 py-1 rounded-full">
+                        أكمل الجمل بصيغة الجمع
+                    </div>
+                </div>
+
+                <!-- Hint -->
+                <div class="arabic-text bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 text-sm text-yellow-800 hint-text">
+                    💡 <strong>تلميح:</strong> اقرأ الكلمة بين القوسين وحولها للجمع حسب القواعد التي تعلمتها
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Question 1 -->
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg break-words">
+                        <span class="font-bold text-indigo-600 min-w-[1.5rem]">1.</span>
+                        <span>These are my favorite</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[7rem] max-w-full" data-answer="accessories" placeholder="...">
+                        <span class="text-gray-500">(accessory)</span>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg break-words">
+                        <span class="font-bold text-indigo-600 min-w-[1.5rem]">2.</span>
+                        <span>Look! Those</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[6rem] max-w-full" data-answer="buses" placeholder="...">
+                        <span>are red.</span>
+                        <span class="text-gray-500">(bus)</span>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg break-words">
+                        <span class="font-bold text-indigo-600 min-w-[1.5rem]">3.</span>
+                        <span>Amina has four</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[6rem] max-w-full" data-answer="children" placeholder="...">
+                        <span class="text-gray-500">(child)</span>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg break-words">
+                        <span class="font-bold text-indigo-600 min-w-[1.5rem]">4.</span>
+                        <span>Those</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[6rem] max-w-full" data-answer="women" placeholder="...">
+                        <span>are</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[6rem] max-w-full" data-answer="teachers" placeholder="...">
+                        <span class="text-gray-500">(woman) (teacher)</span>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg break-words">
+                        <span class="font-bold text-indigo-600 min-w-[1.5rem]">5.</span>
+                        <span>I've got four big</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[6rem] max-w-full" data-answer="lorries" placeholder="...">
+                        <span class="text-gray-500">(lorry)</span>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-3 mt-5 pt-4 border-t">
+                    <button onclick="checkAnswers('exerciseA')" class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>✓</span> Check Answers
+                    </button>
+                    <button onclick="toggleAnswers('exerciseA')" class="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>👁</span> <span class="toggle-text">Show Answers</span>
+                    </button>
+                    <button onclick="resetExercise('exerciseA')" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>↺</span> Reset
+                    </button>
+                </div>
+
+                <!-- Answers Container (Hidden by default) -->
+                <div class="answers-container hidden mt-4 p-4 bg-green-50 rounded-xl border border-green-200 fade-in">
+                    <h4 class="font-bold text-green-700 mb-2">✅ Answers:</h4>
+                    <ol class="list-decimal list-inside space-y-1 text-green-800">
+                        <li><strong>accessories</strong></li>
+                        <li><strong>buses</strong></li>
+                        <li><strong>children</strong></li>
+                        <li><strong>women</strong>, <strong>teachers</strong></li>
+                        <li><strong>lorries</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Exercise B -->
+            <div class="bg-white rounded-2xl card-shadow p-5" id="exerciseB">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                        <span class="bg-purple-100 text-purple-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">B</span>
+                        Complete with the plural form
+                    </h3>
+                    <div class="arabic-text text-sm text-gray-500 bg-purple-50 px-3 py-1 rounded-full">
+                        اكتب صيغة الجمع
+                    </div>
+                </div>
+
+                <!-- Hint -->
+                <div class="arabic-text bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 text-sm text-yellow-800 hint-text">
+                    💡 <strong>تلميح:</strong> تذكر القواعد: أضف s أو es أو غيّر y إلى ies أو f إلى ves
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">car</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="cars" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">class</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="classes" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">fox</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="foxes" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">man</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="men" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">baby</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="babies" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">phone</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="phones" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">pen</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="pens" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">toy</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="toys" placeholder="...">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                        <span class="font-semibold text-purple-600">knife</span>
+                        <span class="text-gray-400">→</span>
+                        <input type="text" class="exercise-input border-2 border-gray-300 rounded-lg px-3 py-1.5 text-center font-semibold min-w-[5rem] flex-1" data-answer="knives" placeholder="...">
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-3 mt-5 pt-4 border-t">
+                    <button onclick="checkAnswers('exerciseB')" class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>✓</span> Check Answers
+                    </button>
+                    <button onclick="toggleAnswers('exerciseB')" class="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>👁</span> <span class="toggle-text">Show Answers</span>
+                    </button>
+                    <button onclick="resetExercise('exerciseB')" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-bold py-2 px-5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <span>↺</span> Reset
+                    </button>
+                </div>
+
+                <!-- Answers Container (Hidden by default) -->
+                <div class="answers-container hidden mt-4 p-4 bg-purple-50 rounded-xl border border-purple-200 fade-in">
+                    <h4 class="font-bold text-purple-700 mb-2">✅ Answers:</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-purple-800">
+                        <span>car → <strong>cars</strong></span>
+                        <span>class → <strong>classes</strong></span>
+                        <span>fox → <strong>foxes</strong></span>
+                        <span>man → <strong>men</strong></span>
+                        <span>baby → <strong>babies</strong></span>
+                        <span>phone → <strong>phones</strong></span>
+                        <span>pen → <strong>pens</strong></span>
+                        <span>toy → <strong>toys</strong></span>
+                        <span>knife → <strong>knives</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Card -->
+        <section class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl card-shadow p-6 text-white">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">🎓</span>
+                Quick Summary - ملخص سريع
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white/10 rounded-xl p-4">
+                    <h3 class="font-bold mb-2">Regular Rules:</h3>
+                    <ul class="text-sm space-y-1 text-purple-100">
+                        <li>• Most nouns: add <strong>-s</strong></li>
+                        <li>• s, ss, sh, ch, x, o: add <strong>-es</strong></li>
+                        <li>• Consonant + y: change to <strong>-ies</strong></li>
+                        <li>• f/fe: change to <strong>-ves</strong></li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 rounded-xl p-4">
+                    <h3 class="font-bold mb-2">Irregular Examples:</h3>
+                    <ul class="text-sm space-y-1 text-purple-100">
+                        <li>• child → <strong>children</strong></li>
+                        <li>• woman → <strong>women</strong></li>
+                        <li>• man → <strong>men</strong></li>
+                        <li>• tooth → <strong>teeth</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="arabic-text mt-4 bg-white/10 rounded-lg p-3 text-sm">
+                🌟 <strong>نصيحة:</strong> تدرب يومياً على هذه القواعد وستتذكرها للأبد!
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500 text-sm">
+        <p>Made with ❤️ for English Learners</p>
+    </footer>
+
+    <script>
+        // Audio context for sound effects
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playClickSound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext();
+                }
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.1);
+            } catch (e) {
+                // Silent fail if audio not supported
+            }
+        }
+
+        function playSuccessSound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext();
+                }
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.frequency.value = 523.25; // C5
+                oscillator.type = 'sine';
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.15);
+
+                setTimeout(() => {
+                    const osc2 = audioCtx.createOscillator();
+                    const gain2 = audioCtx.createGain();
+                    osc2.connect(gain2);
+                    gain2.connect(audioCtx.destination);
+                    osc2.frequency.value = 659.25; // E5
+                    osc2.type = 'sine';
+                    gain2.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc2.start(audioCtx.currentTime);
+                    osc2.stop(audioCtx.currentTime + 0.2);
+                }, 100);
+            } catch (e) {
+                // Silent fail if audio not supported
+            }
+        }
+
+        // Flashcard flip function
+        function flipCard(card) {
+            playClickSound();
+            card.classList.toggle('flipped');
+        }
+
+        // Check answers function
+        function checkAnswers(exerciseId) {
+            const exercise = document.getElementById(exerciseId);
+            const inputs = exercise.querySelectorAll('.exercise-input');
+            let allCorrect = true;
+
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.dataset.answer.toLowerCase();
+
+                input.classList.remove('correct', 'incorrect');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.add('correct');
+                } else if (userAnswer !== '') {
+                    input.classList.add('incorrect');
+                    allCorrect = false;
+                } else {
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect && inputs.length > 0) {
+                playSuccessSound();
+            } else {
+                playClickSound();
+            }
+        }
+
+        // Toggle answers visibility
+        function toggleAnswers(exerciseId) {
+            playClickSound();
+            const exercise = document.getElementById(exerciseId);
+            const answersContainer = exercise.querySelector('.answers-container');
+            const toggleBtn = exercise.querySelector('.toggle-text');
+
+            if (answersContainer.classList.contains('hidden')) {
+                answersContainer.classList.remove('hidden');
+                toggleBtn.textContent = 'Hide Answers';
+            } else {
+                answersContainer.classList.add('hidden');
+                toggleBtn.textContent = 'Show Answers';
+            }
+        }
+
+        // Reset exercise function
+        function resetExercise(exerciseId) {
+            playClickSound();
+            const exercise = document.getElementById(exerciseId);
+            const inputs = exercise.querySelectorAll('.exercise-input');
+            const answersContainer = exercise.querySelector('.answers-container');
+            const toggleBtn = exercise.querySelector('.toggle-text');
+
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+            });
+
+            answersContainer.classList.add('hidden');
+            toggleBtn.textContent = 'Show Answers';
+        }
+
+        // Add input event listeners for live checking
+        document.querySelectorAll('.exercise-input').forEach(input => {
+            input.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    const exerciseId = this.closest('[id^="exercise"]').id;
+                    checkAnswers(exerciseId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
