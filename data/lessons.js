@@ -89,5 +89,13 @@ const LESSONS_DATA = [
         title: "الجمع: Plural Forms",
         path: "lessons/unit1-plural-forms.html",
         icon: "star"
+    },
+    {
+        id: "m1-islamic-u1-exercises-p4",
+        grade: "middle-1-islamic",
+        meta: "الوحدة الأولى - صفحة 4",
+        title: "تمارين - صفحة 4",
+        path: "lessons/unit1-page4-exercises.html",
+        icon: "star"
     }
 ];
