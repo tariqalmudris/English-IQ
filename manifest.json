@@ -10,7 +10,9 @@
   "theme_color": "#4338ca",
   "lang": "ar",
   "dir": "rtl",
-  "categories": ["education"],
+  "categories": [
+    "education"
+  ],
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -38,14 +40,24 @@
       "short_name": "المفضلة",
       "description": "افتح دروسك المفضلة",
       "url": "./favorites.html",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "المرحلة المتوسطة",
       "short_name": "متوسط",
       "description": "دروس المرحلة المتوسطة",
       "url": "./middle-stage.html",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

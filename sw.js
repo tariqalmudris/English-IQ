@@ -1,7 +1,7 @@
 // sw.js — منصة دروسي العراقية — English IQ Iraq Service Worker
 // Strategy: Cache-First for static assets, Network-First for pages
 
-const CACHE_NAME = 'englishiq-v9';
+const CACHE_NAME = 'englishiq-v10';
 const OFFLINE_PAGE = './offline.html';
 
 // Only core system files are pre-cached perfectly on install.
@@ -138,7 +138,8 @@ async function staleWhileRevalidate(request) {
     }
     return networkResponse;
   }).catch(() => {
-    // Silently fail network fetch if offline
+    // If network fails and we have no cache, return the offline page instead of 'undefined'
+    return caches.match(OFFLINE_PAGE);
   });
 
   // Return cached version immediately, or wait for network if not in cache
