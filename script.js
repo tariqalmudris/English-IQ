@@ -256,12 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 html += `
                 <div class="lesson-card" style="animation-delay: ${delay}s" data-lesson-id="${lesson.id}">
-                    <div class="lesson-icon-bg">
-                        ${iconSvg}
-                    </div>
-                    <div class="lesson-info">
-                        <span class="lesson-meta">${lesson.meta}</span>
-                        <h3 class="lesson-title">${lesson.title}</h3>
+                    <div class="lesson-card-header">
+                        <div class="lesson-icon-bg">
+                            ${iconSvg}
+                        </div>
+                        <div class="lesson-info">
+                            <span class="lesson-meta">${lesson.meta}</span>
+                            <h3 class="lesson-title">${lesson.title}</h3>
+                        </div>
                     </div>
                     <div class="lesson-actions">
                         <a href="${lesson.path}" class="watch-btn">

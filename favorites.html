@@ -139,11 +139,13 @@
 
             html += `
             <div class="lesson-card fav-page-card" style="animation-delay: ${delay}s" data-id="${live.id}">
-                <div class="lesson-icon-bg">${iconSvg}</div>
-                <div class="lesson-info">
-                    <span class="lesson-meta">${live.meta}</span>
-                    <h3 class="lesson-title">${live.title}</h3>
-                    ${live.grade ? `<span class="fav-grade-badge">${gradeLabel(live.grade)}</span>` : ''}
+                <div class="lesson-card-header">
+                    <div class="lesson-icon-bg">${iconSvg}</div>
+                    <div class="lesson-info">
+                        <span class="lesson-meta">${live.meta}</span>
+                        <h3 class="lesson-title">${live.title}</h3>
+                        ${live.grade ? `<span class="fav-grade-badge">${gradeLabel(live.grade)}</span>` : ''}
+                    </div>
                 </div>
                 <div class="fav-page-actions">
                     <a href="${live.path}" class="watch-btn">
