@@ -109,17 +109,29 @@
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-100">
+    <!-- Floating Back Button -->
+    <a href="../grade-template.html?grade=middle-1-islamic&title=الأول+متوسط+إسلامي" 
+       class="fixed bottom-6 left-6 z-[60] bg-white text-gray-800 font-bold py-3 px-5 rounded-2xl shadow-2xl hover:shadow-indigo-200/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 border-2 border-indigo-100 group"
+       title="العودة للدروس">
+        <div class="bg-indigo-50 p-2 rounded-xl group-hover:bg-indigo-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <span class="text-lg">إغلاق الدرس</span>
+    </a>
+
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-xl md:text-2xl font-extrabold text-indigo-600">Unit One</h1>
-                    <p class="text-sm text-gray-500">Page 4 – Exercises</p>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-indigo-600">الوحدة الأولى — Unit One</h1>
+                    <p class="text-sm text-gray-500">صفحة 4 — Page 4 — تمارين</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <span id="score" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md">
-                        Score: 0/7
+                        النتيجة: 0/7
                     </span>
                 </div>
             </div>
@@ -129,7 +141,7 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 py-8">
         <!-- Instructions Card -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 mb-8 border-l-4 border-indigo-500">
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-8 border-l-4 border-indigo-500" dir="rtl">
             <div class="flex items-start gap-4">
                 <div class="bg-indigo-100 p-3 rounded-full">
                     <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,13 +149,13 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="text-lg font-bold text-gray-800 mb-2">Instructions</h2>
-                    <p class="text-gray-600">Complete the conversation. Use the correct form of the verb <strong class="text-indigo-600">(be)</strong> or short answers with <strong class="text-indigo-600">(be)</strong>. You can use contractions.</p>
+                    <h2 class="text-lg font-bold text-gray-800 mb-2">تعليمات التمرين</h2>
+                    <p class="text-gray-600 text-lg">أكمل المحادثة باستخدام الصيغة الصحيحة لفعل الكينونة <strong class="text-indigo-600">(be)</strong> أو الإجابات القصيرة. يمكنك استخدام الاختصارات.</p>
                     <p class="text-sm text-gray-500 mt-2 flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
-                        Type your answers in the blanks, then click "Check Answers"
+                        اكتب إجابتك في الفراغ، ثم اضغط على "Check Answers" للتأكد
                     </p>
                 </div>
             </div>
@@ -228,30 +240,30 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                Check Answers
+                Check Answers — تحقق
             </button>
             <button onclick="showHints()" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                 </svg>
-                Show Hints
+                Hints — تلميحات
             </button>
             <button onclick="resetExercise()" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
-                Reset
+                Reset — إعادة
             </button>
         </div>
 
         <!-- Results Modal -->
         <div id="resultsModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full bounce-in">
-                <div id="resultsContent" class="text-center">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full bounce-in text-center">
+                <div id="resultsContent">
                     <!-- Dynamic content -->
                 </div>
                 <button onclick="closeModal()" class="mt-6 w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-6 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all">
-                    Continue
+                    Continue — استمرار
                 </button>
             </div>
         </div>
@@ -262,11 +274,11 @@
                 <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
-                Grammar Reference: Verb "BE"
+                قاعدة فعل الكينونة — Grammar: Verb "BE"
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-indigo-50 rounded-xl p-4">
-                    <h4 class="font-bold text-indigo-700 mb-2">Full Forms</h4>
+                    <h4 class="font-bold text-indigo-700 mb-2">الصيغة الكاملة</h4>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>I <strong>am</strong></li>
                         <li>You/We/They <strong>are</strong></li>
@@ -274,7 +286,7 @@
                     </ul>
                 </div>
                 <div class="bg-teal-50 rounded-xl p-4">
-                    <h4 class="font-bold text-teal-700 mb-2">Contractions</h4>
+                    <h4 class="font-bold text-teal-700 mb-2">صيغة الاختصار</h4>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>I <strong>'m</strong></li>
                         <li>You/We/They <strong>'re</strong></li>
@@ -287,7 +299,7 @@
 
     <!-- Footer -->
     <footer class="text-center py-6 text-gray-500 text-sm">
-        <p>Practice with a partner after completing the exercise! 🎓</p>
+        <p>تدرب مع زميلك بعد إكمال التمرين! 🎓</p>
     </footer>
 
     <script>
@@ -365,7 +377,7 @@
             });
 
             // Update score
-            document.getElementById('score').textContent = `Score: ${correct}/7`;
+            document.getElementById('score').textContent = `النتيجة: ${correct}/7`;
 
             // Show results
             showResults(correct, 7);
@@ -379,24 +391,24 @@
             
             if (correct === total) {
                 emoji = '🎉';
-                title = 'Perfect Score!';
-                message = 'Excellent work! You got all answers correct!';
+                title = 'أحسنت! درجة كاملة';
+                message = 'عمل رائع جداً! لقد أجبت على جميع الأسئلة بشكل صحيح';
                 playSuccessSound();
                 createConfetti();
             } else if (correct >= total * 0.7) {
                 emoji = '👏';
-                title = 'Great Job!';
-                message = `You got ${correct} out of ${total} correct. Keep practicing!`;
+                title = 'جيد جداً!';
+                message = `لقد حصلت على ${correct} من ${total}. استمر في المحاولة!`;
                 playCorrectSound();
             } else if (correct >= total * 0.5) {
                 emoji = '💪';
-                title = 'Good Effort!';
-                message = `You got ${correct} out of ${total} correct. Try again!`;
+                title = 'محاولة جيدة!';
+                message = `لقد حصلت على ${correct} من ${total}. حاول مرة أخرى للتحسين!`;
                 playClickSound();
             } else {
                 emoji = '📚';
-                title = 'Keep Learning!';
-                message = `You got ${correct} out of ${total} correct. Review the grammar reference below.`;
+                title = 'استمر في التعلم!';
+                message = `لقد حصلت على ${correct} من ${total}. راجع القاعدة في الأسفل!`;
                 playIncorrectSound();
             }
 
@@ -404,7 +416,7 @@
                 <div class="text-6xl mb-4">${emoji}</div>
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">${title}</h3>
                 <p class="text-gray-600">${message}</p>
-                <div class="mt-4 bg-gray-100 rounded-xl p-4">
+                <div class="mt-4 bg-gray-100 rounded-xl p-4 inline-block px-8">
                     <span class="text-3xl font-bold text-indigo-600">${correct}</span>
                     <span class="text-gray-500">/ ${total}</span>
                 </div>
@@ -446,7 +458,7 @@
                 input.classList.remove('correct', 'incorrect');
                 input.placeholder = '...';
             });
-            document.getElementById('score').textContent = 'Score: 0/7';
+            document.getElementById('score').textContent = 'النتيجة: 0/7';
         }
 
         function createConfetti() {
