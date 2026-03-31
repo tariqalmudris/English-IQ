@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit One - Page 7 Exercises</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .bounce {
+            animation: bounce 0.5s ease-in-out;
+        }
+        
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        .correct {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+        
+        .incorrect {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+        }
+        
+        .option-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .option-btn:hover:not(.correct):not(.incorrect) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen py-8 px-4">
+    <!-- Floating Back Button -->
+    <a href="../grade-template.html?grade=middle-1-islamic&title=الأول+متوسط+إسلامي" 
+       class="fixed bottom-6 left-6 z-[60] bg-white text-gray-800 font-bold py-3 px-5 rounded-2xl shadow-2xl hover:shadow-indigo-200/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 border-2 border-indigo-100 group"
+       title="العودة للدروس">
+        <div class="bg-indigo-50 p-2 rounded-xl group-hover:bg-indigo-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <span class="text-lg">إغلاق الدرس</span>
+    </a>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
+                Unit One: Page 7
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 font-semibold">Grammar Exercises</p>
+            <p class="text-gray-600 mt-2">Fill in the blanks with a suitable choice</p>
+        </div>
+
+        <!-- Score Display -->
+        <div class="text-center mb-6 fade-in">
+            <div class="inline-block bg-white rounded-full px-6 py-3 shadow-lg">
+                <span class="text-lg font-semibold text-gray-700">Score: </span>
+                <span id="score" class="text-2xl font-bold text-purple-600">0/4</span>
+            </div>
+        </div>
+
+        <!-- Questions Container -->
+        <div class="space-y-6" id="questionsContainer">
+            <!-- Question 1 -->
+            <div class="question-card p-6 fade-in" style="animation-delay: 0.1s">
+                <div class="mb-4">
+                    <span class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-2">Question 1</span>
+                    <p class="text-lg md:text-xl text-gray-800">
+                        <span class="font-semibold">__________</span> many stars in the sky.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-question="1" data-answer="c">
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="a">
+                        a) Is there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="b">
+                        b) Are there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="c">
+                        c) There are
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="d">
+                        d) There is
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card p-6 fade-in" style="animation-delay: 0.2s">
+                <div class="mb-4">
+                    <span class="inline-block bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-2">Question 2</span>
+                    <p class="text-lg md:text-xl text-gray-800">
+                        <span class="font-semibold">__________</span> much time.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-question="2" data-answer="b">
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="a">
+                        a) Is there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="b">
+                        b) There isn't
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="c">
+                        c) There are
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="d">
+                        d) There aren't
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card p-6 fade-in" style="animation-delay: 0.3s">
+                <div class="mb-4">
+                    <span class="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-2">Question 3</span>
+                    <p class="text-lg md:text-xl text-gray-800">
+                        <span class="font-semibold">__________</span> a lot of fruit.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-question="3" data-answer="a">
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="a">
+                        a) There is
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="b">
+                        b) There are
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="c">
+                        c) Are there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="d">
+                        d) There isn't
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card p-6 fade-in" style="animation-delay: 0.4s">
+                <div class="mb-4">
+                    <span class="inline-block bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-2">Question 4</span>
+                    <p class="text-lg md:text-xl text-gray-800">
+                        <span class="font-semibold">__________</span> any life on Jupiter?
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-question="4" data-answer="a">
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="a">
+                        a) Is there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="b">
+                        b) Are there
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="c">
+                        c) There is
+                    </button>
+                    <button class="option-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-left font-medium text-gray-700" data-option="d">
+                        d) There isn't
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Button -->
+        <div class="text-center mt-8 fade-in">
+            <button id="resetBtn" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all">
+                🔄 Reset Quiz
+            </button>
+        </div>
+
+        <!-- Completion Message -->
+        <div id="completionMessage" class="hidden mt-8 text-center">
+            <div class="bg-white rounded-2xl p-8 shadow-2xl inline-block">
+                <div class="text-6xl mb-4">🎉</div>
+                <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 mb-2">
+                    Congratulations!
+                </h2>
+                <p class="text-xl text-gray-700">You've completed all questions!</p>
+                <p class="text-lg text-gray-600 mt-2">Final Score: <span id="finalScore" class="font-bold text-purple-600"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sound generation functions
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playCorrectSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+            oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+            oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.4);
+        }
+        
+        function playIncorrectSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(150, audioContext.currentTime + 0.1);
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+        
+        function playClickSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.05);
+        }
+        
+        function playCompletionSound() {
+            const notes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+            notes.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                const startTime = audioContext.currentTime + (index * 0.1);
+                oscillator.frequency.setValueAtTime(freq, startTime);
+                gainNode.gain.setValueAtTime(0.2, startTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 0.3);
+            });
+        }
+        
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animation = `confetti-fall ${2 + Math.random() * 2}s linear forwards`;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+        }
+        
+        // Quiz logic
+        let score = 0;
+        let answered = new Set();
+        
+        const questionContainers = document.querySelectorAll('[data-question]');
+        
+        questionContainers.forEach(container => {
+            const buttons = container.querySelectorAll('.option-btn');
+            const correctAnswer = container.dataset.answer;
+            const questionNum = container.dataset.question;
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Prevent multiple answers for same question
+                    if (answered.has(questionNum)) return;
+                    
+                    playClickSound();
+                    
+                    const selectedOption = this.dataset.option;
+                    answered.add(questionNum);
+                    
+                    // Disable all buttons for this question
+                    buttons.forEach(btn => btn.style.pointerEvents = 'none');
+                    
+                    if (selectedOption === correctAnswer) {
+                        this.classList.add('correct', 'bounce');
+                        playCorrectSound();
+                        score++;
+                    } else {
+                        this.classList.add('incorrect', 'shake');
+                        playIncorrectSound();
+                        // Show correct answer
+                        buttons.forEach(btn => {
+                            if (btn.dataset.option === correctAnswer) {
+                                setTimeout(() => {
+                                    btn.classList.add('correct');
+                                }, 500);
+                            }
+                        });
+                    }
+                    
+                    updateScore();
+                    
+                    // Check if all questions answered
+                    if (answered.size === 4) {
+                        setTimeout(() => {
+                            showCompletion();
+                        }, 1000);
+                    }
+                });
+            });
+        });
+        
+        function updateScore() {
+            document.getElementById('score').textContent = `${score}/4`;
+            document.getElementById('score').classList.add('bounce');
+            setTimeout(() => {
+                document.getElementById('score').classList.remove('bounce');
+            }, 500);
+        }
+        
+        function showCompletion() {
+            playCompletionSound();
+            createConfetti();
+            document.getElementById('completionMessage').classList.remove('hidden');
+            document.getElementById('finalScore').textContent = `${score}/4`;
+            document.getElementById('completionMessage').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Reset functionality
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            playClickSound();
+            score = 0;
+            answered.clear();
+            updateScore();
+            
+            document.getElementById('completionMessage').classList.add('hidden');
+            
+            questionContainers.forEach(container => {
+                const buttons = container.querySelectorAll('.option-btn');
+                buttons.forEach(btn => {
+                    btn.classList.remove('correct', 'incorrect', 'bounce', 'shake');
+                    btn.style.pointerEvents = 'auto';
+                });
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
