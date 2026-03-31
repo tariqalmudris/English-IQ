@@ -1,7 +1,7 @@
 // sw.js — منصة دروسي العراقية — English IQ Iraq Service Worker
 // Strategy: Cache-First for static assets, Network-First for pages
 
-const CACHE_NAME = 'englishiq-v8';
+const CACHE_NAME = 'englishiq-v9';
 const OFFLINE_PAGE = './offline.html';
 
 // Only core system files are pre-cached perfectly on install.
