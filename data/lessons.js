@@ -105,5 +105,13 @@ const LESSONS_DATA = [
         title: "تمارين - صفحة 7",
         path: "lessons/unit1-page7-exercises.html",
         icon: "star"
+    },
+    {
+        id: "m1-islamic-u1-articles-p8",
+        grade: "middle-1-islamic",
+        meta: "الوحدة الأولى - صفحة 8",
+        title: "تمارين المقالات - Articles (a/an/the)",
+        path: "lessons/unit1-page8-articles.html",
+        icon: "star"
     }
 ];

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="theme-color" content="#4338ca">
+    <title>تمارين المقالات - Articles Practice</title>
+    <meta name="description" content="تمارين المقالات a / an / the - الصف الأول متوسط إسلامي - الوحدة الأولى صفحة 8">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4338ca;
+            --primary-light: #6366f1;
+            --primary-dark: #312e81;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --secondary: #0d9488;
+            --secondary-light: #14b8a6;
+            --success: #10b981;
+            --success-light: #d1fae5;
+            --error: #ef4444;
+            --error-light: #fee2e2;
+            --bg-gradient: linear-gradient(140deg, #f0f4ff 0%, #eef2ff 40%, #f1f5f9 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --shadow: 0 4px 20px -4px rgba(31, 38, 135, 0.1);
+            --shadow-hover: 0 8px 30px -8px rgba(31, 38, 135, 0.15);
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+        
+        /* Header */
+        .app-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 20px;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: none;
+            border-radius: 50px;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(-3px);
+        }
+        
+        .page-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        /* Exercise Header */
+        .exercise-header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        
+        .exercise-title {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .exercise-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Instructions Card */
+        .instructions-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 2px solid #fcd34d;
+            animation: slideUp 0.5s ease 0.1s both;
+        }
+        
+        .instructions-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #92400e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .instructions-text {
+            color: #78350f;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        /* Question Cards */
+        .questions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .question-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            animation: slideUp 0.5s ease both;
+        }
+        
+        .question-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .question-card.correct {
+            border-color: var(--success);
+            background: linear-gradient(135deg, white, var(--success-light));
+        }
+        
+        .question-card.wrong {
+            border-color: var(--error);
+            background: linear-gradient(135deg, white, var(--error-light));
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .question-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            font-family: 'Outfit', sans-serif;
+            flex-shrink: 0;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .question-text .blank {
+            display: inline-block;
+            min-width: 60px;
+            border-bottom: 2px dashed var(--primary-light);
+            margin: 0 4px;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        /* Input Area */
+        .input-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .article-input {
+            width: 80px;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .article-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        
+        .article-input.correct {
+            border-color: var(--success);
+            background: var(--success-light);
+            color: #065f46;
+        }
+        
+        .article-input.wrong {
+            border-color: var(--error);
+            background: var(--error-light);
+            color: #991b1b;
+        }
+        
+        .hint-btn {
+            padding: 8px 14px;
+            background: rgba(99, 102, 241, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hint-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hint-text {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(99, 102, 241, 0.08);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+        
+        .hint-text.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feedback.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .feedback.correct {
+            background: var(--success-light);
+            color: #065f46;
+        }
+        
+        .feedback.wrong {
+            background: var(--error-light);
+            color: #991b1b;
+        }
+        
+        /* Action Buttons */
+        .actions-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-height: 52px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid #e2e8f0;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: var(--primary-light);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #34d399, var(--success));
+            color: white;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Score Card */
+        .score-card {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 40px -10px var(--primary-glow);
+            display: none;
+            animation: slideUp 0.5s ease;
+        }
+        
+        .score-card.show {
+            display: block;
+        }
+        
+        .score-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .score-value {
+            font-size: 3rem;
+            font-weight: 900;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .score-message {
+            margin-top: 8px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50px;
+            height: 8px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+            border-radius: 50px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .question-card {
+                padding: 16px;
+            }
+            
+            .question-text {
+                font-size: 1rem;
+            }
+            
+            .article-input {
+                width: 70px;
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                flex: 1;
+                min-width: 140px;
+            }
+            
+            .actions-bar {
+                flex-direction: column;
+            }
+        }
+        
+        /* Celebration Animation */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .celebration.show {
+            display: block;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            animation: confetti-fall 3s ease-out forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <a href="../grade-template.html?grade=middle-1-islamic&title=الأول+متوسط+إسلامي" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                رجوع
+            </a>
+            <span class="page-title">الصف الأول متوسط إسلامي</span>
+            <div style="width: 80px;"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="exercise-header">
+            <div class="badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                الوحدة الأولى - صفحة 8
+            </div>
+            <h1 class="exercise-title">املأ الفراغات بالمقال المناسب</h1>
+            <p class="exercise-subtitle">Fill in the blanks with a suitable article (a / an / the)</p>
+        </div>
+
+        <div class="instructions-card">
+            <div class="instructions-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="color: #92400e;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+                تعليمات
+            </div>
+            <p class="instructions-text">
+                اكتب المقال الصحيح (a / an / the) في كل فراغ. استخدم <strong>a</strong> قبل الأصوات الساكنة، 
+                <strong>an</strong> قبل الأصوات المتحركة، و <strong>the</strong> للتحديد.
+            </p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="questions-container" id="questionsContainer">
+            <!-- Questions will be generated by JavaScript -->
+        </div>
+
+        <div class="actions-bar">
+            <button class="btn btn-primary" onclick="checkAnswers()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                تحقق من الإجابات
+            </button>
+            <button class="btn btn-success" onclick="showAnswers()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                عرض الإجابات
+            </button>
+            <button class="btn btn-secondary" onclick="resetAll()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+                إعادة المحاولة
+            </button>
+        </div>
+
+        <div class="score-card" id="scoreCard">
+            <div class="score-title">نتيجتك</div>
+            <div class="score-value" id="scoreValue">0/5</div>
+            <div class="score-message" id="scoreMessage">أحسنت! استمر في التعلم</div>
+        </div>
+    </main>
+
+    <div class="celebration" id="celebration"></div>
+
+    <script>
+        const questions = [
+            {
+                number: 1,
+                before: '',
+                after: 'man is sitting opposite to me.',
+                answer: 'a',
+                hint: 'نستخدم "a" قبل الأصوات الساكنة (man يبدأ بصوت ساكن)'
+            },
+            {
+                number: 2,
+                before: 'Would you like to eat',
+                after: 'egg for breakfast?',
+                answer: 'an',
+                hint: 'نستخدم "an" قبل الأصوات المتحركة (egg يبدأ بصوت متحرك)'
+            },
+            {
+                number: 3,
+                before: 'Ahmed is looking for',
+                after: 'job.',
+                answer: 'a',
+                hint: 'نستخدم "a" قبل الأصوات الساكنة (job يبدأ بصوت ساكن)'
+            },
+            {
+                number: 4,
+                before: 'Sometimes we eat at home and sometimes we go to',
+                after: 'restaurant.',
+                answer: 'a',
+                hint: 'نستخدم "a" عندما نتحدث عن مطعم غير محدد'
+            },
+            {
+                number: 5,
+                before: 'I saw',
+                after: 'accident in the morning.',
+                answer: 'an',
+                hint: 'نستخدم "an" قبل الأصوات المتحركة (accident يبدأ بصوت متحرك)'
+            }
+        ];
+
+        let answeredCount = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+            
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${q.number}</div>
+                        <div class="question-text">
+                            ${q.before} <span class="blank" id="blank-${q.number}">.....</span> ${q.after}
+                        </div>
+                    </div>
+                    <div class="input-area">
+                        <input type="text" 
+                               class="article-input" 
+                               id="input-${q.number}" 
+                               placeholder="a/an/the"
+                               autocomplete="off">
+                        <button class="hint-btn" onclick="toggleHint(${q.number})">
+                            💡 تلميح
+                        </button>
+                    </div>
+                    <div class="hint-text" id="hint-${q.number}">
+                        ${q.hint}
+                    </div>
+                    <div class="feedback" id="feedback-${q.number}">
+                        <!-- Feedback will be shown here -->
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleHint(number) {
+            const hint = document.getElementById(`hint-${number}`);
+            hint.classList.toggle('show');
+        }
+
+        function updateProgress() {
+            const progress = (answeredCount / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function checkAnswers() {
+            let correct = 0;
+            answeredCount = 0;
+            
+            questions.forEach(q => {
+                const input = document.getElementById(`input-${q.number}`);
+                const card = input.closest('.question-card');
+                const feedback = document.getElementById(`feedback-${q.number}`);
+                const blank = document.getElementById(`blank-${q.number}`);
+                
+                const value = input.value.trim().toLowerCase();
+                
+                if (value) {
+                    answeredCount++;
+                    
+                    if (value === q.answer) {
+                        correct++;
+                        input.classList.add('correct');
+                        input.classList.remove('wrong');
+                        card.classList.add('correct');
+                        card.classList.remove('wrong');
+                        feedback.className = 'feedback correct show';
+                        feedback.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                            إجابة صحيحة! أحسنت
+                        `;
+                        blank.textContent = q.answer;
+                        blank.style.color = '#10b981';
+                    } else {
+                        input.classList.add('wrong');
+                        input.classList.remove('correct');
+                        card.classList.add('wrong');
+                        card.classList.remove('correct');
+                        feedback.className = 'feedback wrong show';
+                        feedback.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            الإجابة الصحيحة هي: ${q.answer}
+                        `;
+                    }
+                }
+            });
+            
+            updateProgress();
+            showScore(correct);
+            
+            if (correct === questions.length) {
+                celebrate();
+            }
+        }
+
+        function showAnswers() {
+            questions.forEach(q => {
+                const input = document.getElementById(`input-${q.number}`);
+                const blank = document.getElementById(`blank-${q.number}`);
+                const hint = document.getElementById(`hint-${q.number}`);
+                
+                input.value = q.answer;
+                input.classList.add('correct');
+                blank.textContent = q.answer;
+                blank.style.color = '#10b981';
+                hint.classList.add('show');
+            });
+            
+            answeredCount = questions.length;
+            updateProgress();
+            showScore(questions.length);
+        }
+
+        function resetAll() {
+            questions.forEach(q => {
+                const input = document.getElementById(`input-${q.number}`);
+                const card = input.closest('.question-card');
+                const feedback = document.getElementById(`feedback-${q.number}`);
+                const blank = document.getElementById(`blank-${q.number}`);
+                const hint = document.getElementById(`hint-${q.number}`);
+                
+                input.value = '';
+                input.classList.remove('correct', 'wrong');
+                card.classList.remove('correct', 'wrong');
+                feedback.classList.remove('show');
+                blank.textContent = '.....';
+                blank.style.color = '';
+                hint.classList.remove('show');
+            });
+            
+            answeredCount = 0;
+            updateProgress();
+            document.getElementById('scoreCard').classList.remove('show');
+        }
+
+        function showScore(correct) {
+            const scoreCard = document.getElementById('scoreCard');
+            const scoreValue = document.getElementById('scoreValue');
+            const scoreMessage = document.getElementById('scoreMessage');
+            
+            scoreValue.textContent = `${correct}/${questions.length}`;
+            
+            if (correct === questions.length) {
+                scoreMessage.textContent = 'ممتاز! إجاباتك كلها صحيحة 🎉';
+            } else if (correct >= questions.length * 0.6) {
+                scoreMessage.textContent = 'أحسنت! استمر في التعلم 💪';
+            } else {
+                scoreMessage.textContent = 'حاول مرة أخرى، يمكنك التحسن! 📚';
+            }
+            
+            scoreCard.classList.add('show');
+            scoreCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function celebrate() {
+            const celebration = document.getElementById('celebration');
+            celebration.innerHTML = '';
+            celebration.classList.add('show');
+            
+            const colors = ['#6366f1', '#14b8a6', '#f59e0b', '#ef4444', '#10b981'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                celebration.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                celebration.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize
+        renderQuestions();
+    </script>
+</body>
+</html>
